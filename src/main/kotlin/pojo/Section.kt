@@ -1,10 +1,26 @@
 package pojo
 
 data class Section(
-    var id: Int = 0,
-    var name: String,
-    var location: String
+    private var _id: Int = 0,
+    private var _name: String,
+    private var _location: String
 ) : ListedArgs {
-    override val argsNames = listOf("name", "location")
-    override val args = listOf(name, location)
+    var id: Int = _id
+
+
+    var name: String = _name
+        set(value) {
+            field = value
+            args["name"] = value
+        }
+
+    var location: String = _location
+        set(value) {
+            field = value
+            args["location"] = value
+        }
+    override val args
+        get() = mutableMapOf(
+            "name" to name, "location" to location
+        )
 }

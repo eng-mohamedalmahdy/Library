@@ -23,8 +23,9 @@ interface DatabaseAccessModel<T : ListedArgs> {
             newItem.args,
             oldItemId
         )
-    )
 
+    )
+    
     fun delete(id: Int) =
         DatabaseInstance.stmt.execute(QueriesTemplate.deleteById(ENTITY_NAME, id))
 }
