@@ -1,4 +1,4 @@
-package util
+package bussiness.util
 
 fun String.replaceLast(old: String, new: String)
 = this.reversed().replaceFirst(old, new).reversed()

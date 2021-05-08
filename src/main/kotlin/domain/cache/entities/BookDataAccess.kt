@@ -1,14 +1,14 @@
-package cache.entities
+package domain.cache.entities
 
-import cache.DatabaseInstance
-import pojo.Book
-import util.QueriesTemplate
+import domain.cache.DatabaseInstance
+import bussiness.pojo.Book
+import bussiness.util.QueriesTemplate
 
 object BookDataAccess : DatabaseAccessModel<Book> {
     override val ENTITY_NAME = "books"
 
     override fun getById(id: Int): Book {
-        val q = DatabaseInstance.stmt.executeQuery(QueriesTemplate.getById(SectionDataAccess.ENTITY_NAME, id))
+        val q = DatabaseInstance.stmt.executeQuery(QueriesTemplate.getById(ENTITY_NAME, id))
         q.next()
         return Book(
             q.getInt(1),
@@ -23,7 +23,7 @@ object BookDataAccess : DatabaseAccessModel<Book> {
     }
 
     override fun getAll(): List<Book> {
-        val q = DatabaseInstance.stmt.executeQuery(QueriesTemplate.getAllTemplate(SectionDataAccess.ENTITY_NAME))
+        val q = DatabaseInstance.stmt.executeQuery(QueriesTemplate.getAllTemplate(ENTITY_NAME))
         val res = mutableListOf<Book>()
         while (q.next()) {
             res.add(

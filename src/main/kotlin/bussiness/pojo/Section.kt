@@ -1,20 +1,16 @@
-package pojo
+package bussiness.pojo
 
-data class Section(
-    private var _id: Int = 0,
-    private var _name: String,
-    private var _location: String
-) : ListedArgs {
-    var id: Int = _id
+class Section(id: Int = 0, name: String, location: String) : ListedArgs {
+    var id: Int = id
 
 
-    var name: String = _name
+    var name: String = name
         set(value) {
             field = value
             args["name"] = value
         }
 
-    var location: String = _location
+    var location: String = location
         set(value) {
             field = value
             args["location"] = value

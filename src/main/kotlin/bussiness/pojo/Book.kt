@@ -1,52 +1,53 @@
-package pojo
+package bussiness.pojo
 
-data class Book(
-    private var _id: Int = 0,
-    private var _title: String,
-    private var _dataOfPublication: String,
-    private var _numberOfPages: Int,
-    private var _cover: String,
-    private var _description: String,
-    private var _sectionId: Int,
-    private var _authorId: Int,
+class Book(
+    id: Int = 0,
+    title: String,
+    dataOfPublication: String,
+    numberOfPages: Int,
+    cover: String,
+    description: String,
+    sectionId: Int,
+    authorId: Int,
 ) : ListedArgs {
 
-    var id: Int = _id
 
-    var title: String = _title
+    var id: Int = id
+
+    var title: String = title
         set(value) {
             field = value
             args["title"] = value
         }
 
-    var dataOfPublication: String = _dataOfPublication
+    var dataOfPublication: String = dataOfPublication
         set(value) {
             field = value
             args["date_of_publication"] = value
         }
-    var numberOfPages: Int = _numberOfPages
+    var numberOfPages: Int = numberOfPages
         set(value) {
             field = value
             args["page_num"] = value.toString()
         }
 
-    var cover: String = _cover
+    var cover: String = cover
         set(value) {
             field = value
             args["page_num"] = numberOfPages.toString()
         }
 
-    var description: String = _description
+    var description: String = description
         set(value) {
             field = value
             args["description"] = description
         }
-    var sectionId: Int = _sectionId
+     var sectionId: Int = sectionId
         set(value) {
             field = value
             args["sectionID"] = value.toString()
         }
-    var authorId: Int = _authorId
+     var authorId: Int = authorId
         set(value) {
             field = value
             args["AutherID"] = value.toString()
@@ -62,5 +63,6 @@ data class Book(
             "sectionID" to sectionId.toString(),
             "AutherID" to authorId.toString(),
         )
+
 
 }

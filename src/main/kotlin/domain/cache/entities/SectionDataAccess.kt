@@ -1,8 +1,8 @@
-package cache.entities
+package domain.cache.entities
 
-import cache.DatabaseInstance
-import util.QueriesTemplate
-import pojo.Section
+import domain.cache.DatabaseInstance
+import bussiness.util.QueriesTemplate
+import bussiness.pojo.Section
 
 object SectionDataAccess : DatabaseAccessModel<Section> {
 

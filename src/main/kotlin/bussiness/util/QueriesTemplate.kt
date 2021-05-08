@@ -1,10 +1,10 @@
-package util
+package bussiness.util
 
 object QueriesTemplate {
     fun insertTemplate(entityName: String, argsNames: List<String>, args: List<String>): String {
         val prefix = if (argsNames[0].isDigit()) "" else "\'"
-        val argsNamesString = argsNames.fold("") { acc, s -> "$acc$prefix$s$prefix, " }.removeLast(",")
-        val argsString = args.fold("") { acc, s -> "$acc$s, " }.removeLast(",")
+        val argsNamesString = argsNames.fold("") { acc, s -> "$acc$s, " }.removeLast(",")
+        val argsString = args.fold("") { acc, s -> "$acc$prefix$s$prefix, " }.removeLast(",")
         return "INSERT INTO $entityName ($argsNamesString) VALUES ($argsString);"
     }
 

@@ -1,11 +1,9 @@
-package pojo
+package bussiness.pojo
 
-data class Author(
-    private var _id: Int = 0,
-    private var _name: String,
-    private var _birthDate: String,
-    private var _age: Int,
-) : ListedArgs {
+class Author(_id: Int = 0, _name: String, _birthDate: String, _age: Int) : ListedArgs {
+
+    constructor() : this(0, "", "", 0)
+
     var id: Int = _id
 
     var name: String = _name
@@ -17,7 +15,7 @@ data class Author(
     var birthDate: String = _birthDate
         set(value) {
             field = value
-            args["birthDate"] = value
+            args["birthday"] = value
         }
 
     var age: Int = _age
@@ -29,7 +27,8 @@ data class Author(
     override val args: MutableMap<String, String>
         get() = mutableMapOf(
             "name" to name,
-            "birthDate" to birthDate,
+            "birthday" to birthDate,
             "age" to age.toString()
         )
+
 }
