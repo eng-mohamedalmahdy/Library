@@ -131,10 +131,11 @@ fun dashboardSection(currentTab: String) {
             newValue = Book(
                 0, bookTitle.value, dateOfPublication.value,
                 numberOfPages.value, cover.value, description.value,
-                authors.firstOrNull { it.name == currentAuthor.value }?.id ?: -1,
-                sections.firstOrNull { it.name == currentSection.value }?.id ?: -1
+                authors.firstOrNull { it.name.contains(currentAuthor.value, true) }?.id ?: -1,
+                sections.firstOrNull { it.name.contains(currentSection.value, true) }?.id ?: -1
 
             )
+            println(newValue)
         }
         Column {
             OutlinedTextField(
@@ -188,7 +189,10 @@ fun dashboardSection(currentTab: String) {
                     dropDownList(
                         isAuthorOpen.value,
                         authorsNames,
-                        { isAuthorOpen.value = it }, { currentAuthor.value = it })
+                        { isAuthorOpen.value = it }, {
+                            currentAuthor.value = it
+                            updateBook()
+                        })
                 }
                 Column {
                     Box(
@@ -205,7 +209,10 @@ fun dashboardSection(currentTab: String) {
                     dropDownList(
                         isSectionOpen.value,
                         sectionsNames,
-                        { isSectionOpen.value = it }, { currentSection.value = it })
+                        { isSectionOpen.value = it }, {
+                            currentSection.value = it
+                            updateBook()
+                        })
                 }
             }
         }
@@ -282,8 +289,8 @@ fun dashboardSection(currentTab: String) {
                 }
                 Constants.PAGE_BOOK -> {
                     values = DataRepository.getAll(BookDataAccess).toMutableList()
-                    values.map { BookSummary(it as Book) }
-                    table(values as MutableList<BookSummary>)
+
+                    table(values.map { BookSummary(it as Book) } as MutableList<BookSummary>)
                 }
             }
 

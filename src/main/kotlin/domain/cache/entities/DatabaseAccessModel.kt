@@ -9,15 +9,18 @@ import bussiness.util.QueriesTemplate
 interface DatabaseAccessModel<T : ListedArgs> {
     val ENTITY_NAME: String
 
-    fun insert(t: T) =
+    fun insert(t: T) {
+        val q = QueriesTemplate.insertTemplate(
+            ENTITY_NAME,
+            t.args.keys.toMutableStateList(),
+            t.args.values.toMutableStateList()
+        )
+        println(q)
         DatabaseInstance.stmt
             .execute(
-                QueriesTemplate.insertTemplate(
-                    ENTITY_NAME,
-                    t.args.keys.toMutableStateList(),
-                    t.args.values.toMutableStateList()
-                )
+                q
             )
+    }
 
 
     fun getById(id: Int): T

@@ -31,4 +31,9 @@ class Author(_id: Int = 0, _name: String, _birthDate: String, _age: Int) : Liste
             "age" to age.toString()
         )
 
+    override fun toString(): String {
+        return "Author(id=$id, name='$name', birthDate='$birthDate', age=$age)"
+    }
+
+
 }

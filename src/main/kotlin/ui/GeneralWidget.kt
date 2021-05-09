@@ -55,7 +55,7 @@ inline fun <reified T> table(list: Iterable<T>) {
                 for (arg in privates) {
                     val field = T::class.java.getDeclaredField(arg.name)
                     field.isAccessible = true
-                    val value = field.get(v).toString()
+                    var value = field.get(v).toString()
                     Text(
                         value,
                         modifier = androidx.compose.ui.Modifier.border(BorderStroke(1.dp, Color.Black))

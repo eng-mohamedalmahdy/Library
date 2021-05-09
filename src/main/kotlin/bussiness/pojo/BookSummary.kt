@@ -5,8 +5,8 @@ import domain.cache.entities.SectionDataAccess
 
 class BookSummary(book: Book) {
     var id = book.id
-    var title = book.title
-    var author = AuthorDataAccess.getById(book.authorId).name
-    var section = SectionDataAccess.getById(book.sectionId).name
+    var title: String = book.title
+    var author: String = AuthorDataAccess.getById(book.authorId).name
+    var section: String = SectionDataAccess.getById(book.sectionId).name
 
 }

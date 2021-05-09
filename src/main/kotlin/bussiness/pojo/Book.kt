@@ -64,5 +64,9 @@ class Book(
             "AutherID" to authorId.toString(),
         )
 
+    override fun toString(): String {
+        return "Book(id=$id, title='$title', dataOfPublication='$dataOfPublication', numberOfPages=$numberOfPages, cover='$cover', description='$description', sectionId=$sectionId, authorId=$authorId)"
+    }
+
 
 }
