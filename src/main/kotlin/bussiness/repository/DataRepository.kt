@@ -15,4 +15,10 @@ object DataRepository {
     fun getSections() = SectionDataAccess.getAll()
 
     fun getAuthors() = AuthorDataAccess.getAll()
+
+    fun <T : ListedArgs> deleteById(databaseAccessModel: DatabaseAccessModel<T>, id: Int) =
+        databaseAccessModel.delete(id)
+
+    fun <T : ListedArgs> update(databaseAccessModel: DatabaseAccessModel<T>, id: Int, edited: T) =
+        databaseAccessModel.update(id, edited)
 }

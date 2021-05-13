@@ -2,13 +2,13 @@ package bussiness.pojo
 
 class Book(
     id: Int = 0,
-    title: String,
-    dataOfPublication: String,
-    numberOfPages: Int,
-    cover: String,
-    description: String,
-    sectionId: Int,
-    authorId: Int,
+    title: String = "",
+    dataOfPublication: String = "",
+    numberOfPages: Int = 0,
+    cover: String = "",
+    description: String = "",
+    sectionId: Int = -1,
+    authorId: Int = -1,
 ) : ListedArgs {
 
 
@@ -42,12 +42,12 @@ class Book(
             field = value
             args["description"] = description
         }
-     var sectionId: Int = sectionId
+    var sectionId: Int = sectionId
         set(value) {
             field = value
             args["sectionID"] = value.toString()
         }
-     var authorId: Int = authorId
+    var authorId: Int = authorId
         set(value) {
             field = value
             args["AutherID"] = value.toString()
