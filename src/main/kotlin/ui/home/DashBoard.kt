@@ -253,13 +253,14 @@ fun dashboardSection(currentTab: String) {
 
     @Composable
     fun showAddDialog() {
+        val addOrEdit = if (updatingDatabase) "Edit" else "Add"
         AlertDialog(
             properties = DesktopDialogProperties(
-                title = "Add ${currentTab.toLowerCase().capitalize()}",
+                title = "$addOrEdit ${currentTab.toLowerCase().capitalize()}",
                 size = IntSize(500, 450)
             ),
             onDismissRequest = { addingInDatabase = false },
-            title = { Text("Add ${currentTab.toLowerCase().capitalize()}") },
+            title = { Text("$addOrEdit ${currentTab.toLowerCase().capitalize()}") },
             confirmButton = {
                 Button(onClick = {
                     updating = true
