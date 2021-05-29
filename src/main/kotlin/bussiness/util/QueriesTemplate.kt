@@ -4,7 +4,7 @@ object QueriesTemplate {
     fun insertTemplate(entityName: String, argsNames: List<String>, args: List<String>): String {
         val argsNamesString = argsNames.fold("") { acc, s -> "$acc$s, " }.removeLast(",")
         val argsString = args.fold("") { acc, s ->
-            val prefix = if (s.isDigit()) "" else "\'"
+            val prefix = if (s.isDigit()&&s.isNotEmpty()) "" else "\'"
             "$acc$prefix$s$prefix, "
         }.removeLast(",")
         return "INSERT INTO $entityName ($argsNamesString) VALUES ($argsString);"
@@ -12,7 +12,7 @@ object QueriesTemplate {
 
     fun updateTemplate(entityName: String, argsNames: List<String>, args: List<String>): String {
         val zippedList = argsNames.zip(args) { argName: String, arg: String ->
-            val prefix = if (arg.isDigit()) "" else "\'"
+            val prefix = if (arg.isDigit()&&arg.isNotEmpty()) "" else "\'"
             "$argName = $prefix$arg$prefix"
         }
         val values = zippedList.fold("") { acc, s -> "$acc$s, " }.removeLast(",")
@@ -22,7 +22,7 @@ object QueriesTemplate {
     fun updateById(entityName: String, argsNames: List<String>, args: List<String>, id: Int): String {
 
         val zippedList = argsNames.zip(args) { argName: String, arg: String ->
-            val prefix = if (arg.isDigit()) "" else "\'"
+            val prefix = if (arg.isDigit()&&arg.isNotEmpty()) "" else "\'"
             "$argName = $prefix$arg$prefix"
         }
         val values = zippedList.fold("") { acc, s -> "$acc$s, " }.removeLast(",")
