@@ -164,9 +164,8 @@ fun dashboardSection(currentTab: String) {
             newValue = Book(
                 id, bookTitle.value, dateOfPublication.value,
                 numberOfPages.value, cover.value, description.value,
+                sections.firstOrNull { it.name.contains(currentSection.value.toString(), true) }?.id ?: -1,
                 authors.firstOrNull { it.name.contains(currentAuthor.value.toString(), true) }?.id ?: -1,
-                sections.firstOrNull { it.name.contains(currentSection.value.toString(), true) }?.id ?: -1
-
             )
             println(newValue)
         }

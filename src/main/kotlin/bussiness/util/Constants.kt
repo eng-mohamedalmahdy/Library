@@ -1,7 +1,7 @@
 package bussiness.util
 
 object Constants {
-    val PAGE_BOOK = "BOOK"
-    val PAGE_AUTHOR = "AUTHOR"
-    val PAGE_SECTION = "SECTION"
+    const val PAGE_BOOK = "BOOK"
+    const val PAGE_AUTHOR = "AUTHOR"
+    const val PAGE_SECTION = "SECTION"
 }

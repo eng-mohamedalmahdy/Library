@@ -1,6 +1,11 @@
 package bussiness.pojo
 
-class Author(_id: Int = 0, _name: String, _birthDate: String, _age: Int) : ListedArgs {
+class Author(
+    _id: Int = 0,
+    _name: String,
+    _birthDate: String,
+    _age: Int
+) : ListedArgs {
 
     constructor() : this(0, "", "", 0)
 
