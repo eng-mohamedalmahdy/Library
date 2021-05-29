@@ -314,7 +314,14 @@ fun dashboardSection(currentTab: String) {
     ) {
 
         Row {
-            Button(modifier = Modifier.padding(25.dp), onClick = { addingInDatabase = true }) {
+            Button(modifier = Modifier.padding(25.dp), onClick = {
+                addingInDatabase = true
+                when (newValue) {
+                    is Book -> newValue = Book()
+                    is Author -> newValue = Author()
+                    is Section -> newValue = Section()
+                }
+            }) {
                 Text("Add new ${currentTab.toLowerCase().capitalize()}")
             }
 

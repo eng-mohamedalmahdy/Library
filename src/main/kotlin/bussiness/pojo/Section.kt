@@ -3,6 +3,7 @@ package bussiness.pojo
 class Section(id: Int = 0, name: String, location: String) : ListedArgs {
     var id: Int = id
 
+    constructor() : this(-1, "", "")
 
     var name: String = name
         set(value) {
